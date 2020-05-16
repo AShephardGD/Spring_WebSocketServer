@@ -12,11 +12,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(MySocketController(), "/handler")
-                .addInterceptors(new HttpSessionHandshakeInterceptor());
-    }
-
-    public WebSocketHandler MySocketController() {
-        return new SocketController();
+        webSocketHandlerRegistry.addHandler(new SocketController(), "/handler")
+                .setAllowedOrigins("*");
     }
 }

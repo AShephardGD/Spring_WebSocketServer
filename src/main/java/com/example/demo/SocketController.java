@@ -17,15 +17,6 @@ class SocketController extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        System.out.println("Got message");
-        String time = new SimpleDateFormat("HH:mm").format(new Date());
+        session.sendMessage(message);
     }
-
-    /*@MessageMapping("/chat")
-    @SendTo("/chat")
-    public String send(Message message) throws Exception {
-        System.out.println("Got message");
-        String time = new SimpleDateFormat("HH:mm").format(new Date());
-        return message.getFrom() + " " + message.getContent() + " " +  time;
-    }*/
 }
